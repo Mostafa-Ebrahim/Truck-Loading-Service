@@ -20,8 +20,8 @@ router.delete('/delete/parcel', apiController.deleteParcel);
 
 router.put('/load', apiController.loadParcel);
 
-router.put('/unload/parcel', apiController.unloadParcel);
-
 router.put('/unload/truck', apiController.unloadTruck);
+
+router.put('/unload/parcel', apiController.unloadParcel);
 
 module.exports = router;

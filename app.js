@@ -21,7 +21,7 @@ app.use((req, res, next) => {
 app.use('/api', apiRouter);
 
 Truck.hasMany(Parcel);
-Truck.belongsTo(Parcel, { constraints: true, onDelete: 'SET NULL' });
+Parcel.belongsTo(Truck, { constraints: true, onDelete: 'SET NULL' });
 
 database
     // .sync({ force: true })

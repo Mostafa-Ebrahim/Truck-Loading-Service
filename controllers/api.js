@@ -82,24 +82,24 @@ exports.loadParcel = async (req, res, next) => {
   });
 };
 
-exports.unloadParcel = async (req, res, next) => {
-  const parcel_id = req.body.parcel_id;
-
-  const parcel = await Parcel.findByPk(parcel_id);
-  await parcel.update({ truckId: null });
-  await res.status(200).json({
-    message: 'parcel has been unloaded successfully!'
-  });
-};
-
 exports.unloadTruck = async (req, res, next) => {
-  const truck_id = req.body.truck_id;
+  const id = req.body.id;
 
-  const parcels = await Parcel.findAll({ where: { truckId: truck_id } });
+  const parcels = await Parcel.findAll({ where: { truckId: id } });
   await parcels.forEach(parcel => {
     parcel.update({ truckId: null });
   });
   await res.status(200).json({
     message: 'parcels has been unloaded successfully!'
+  });
+};
+
+exports.unloadParcel = async (req, res, next) => {
+  const id = req.body.id;
+
+  const parcel = await Parcel.findByPk(id);
+  await parcel.update({ truckId: null });
+  await res.status(200).json({
+    message: 'parcel has been unloaded successfully!'
   });
 };
