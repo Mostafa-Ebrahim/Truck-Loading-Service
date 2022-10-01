@@ -6,6 +6,8 @@ const router = express.Router();
 
 router.get('/get/trucks', apiController.getTrucks);
 
+router.get('/get/truck', apiController.getTruck);
+
 router.get('/get/parcels', apiController.getParcels);
 
 router.post('/create/truck', apiController.createTruck);
