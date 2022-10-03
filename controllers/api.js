@@ -6,6 +6,11 @@ exports.getTrucks = async (req, res, next) => {
   await res.status(200).json(trucks);
 };
 
+exports.getParcels = async (req, res, next) => {
+  const parcels = await Parcel.findAll();
+  await res.status(200).json(parcels);
+};
+
 exports.getTruck = async (req, res, next) => {
   const id = req.query.id;
 
@@ -18,11 +23,6 @@ exports.getTruck = async (req, res, next) => {
     totalWeight += parcel.weight;
   });
   await res.status(200).json({ truck, parcels, totalWeight, totalParcels });
-};
-
-exports.getParcels = async (req, res, next) => {
-  const parcels = await Parcel.findAll();
-  await res.status(200).json(parcels);
 };
 
 exports.createTruck = async (req, res, next) => {
